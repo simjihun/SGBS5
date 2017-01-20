@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<!-- LAYOUT -->
+	<definition name="layout" template="/WEB-INF/spring/tiles/layout.jsp">
+	  	<put-attribute name="title" value="" />
+	  	<put-attribute name="template" value="/WEB-INF/view/inc/template.jsp" />
+	  	<put-attribute name="header" value="/WEB-INF/view/inc/header.jsp"/>
+	  	<put-attribute name="body" value="" />
+	  	<put-attribute name="left" value="/WEB-INF/view/inc/left.jsp"/>
+	</definition>
+
+	  
+	<!-- MAIN -->
+	<definition name="main" extends="layout">
+		<put-attribute name="title" value= "벽산아파트" />
+		<put-attribute name="body" value="/WEB-INF/view/main/main.jsp"/>
+	</definition>
+	<definition name="usedCurrent" extends="layout">
+		<put-attribute name="title" value= "Tide : 현재검침값 조회" />
+		<put-attribute name="body" value="/WEB-INF/view/used/usedCurrent.jsp"/>
+	</definition>
+	</tiles-definitions>
