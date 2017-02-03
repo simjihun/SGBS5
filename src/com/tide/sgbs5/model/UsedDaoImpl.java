@@ -8,10 +8,9 @@ import com.tide.sgbs5.mapper.UsedManager;
 public class UsedDaoImpl implements UsedDao {
 
 	@Override
-	public List<UsedCurrentDTO> usedShow(String rsd_id) {
+	public List<UsedCurrentDTO> usedShow(UsedCurrentDTO usedCurrentDto) {
 		List<UsedCurrentDTO> result = new ArrayList<UsedCurrentDTO>();
-		System.out.println("경로 : UsedDaoImpl -- usedShow -- rsd_id값 : " + rsd_id);
-		result = UsedManager.usedShow(rsd_id);
+		result = UsedManager.usedShow(usedCurrentDto);
 		return result;
 	}
 	

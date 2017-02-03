@@ -14,9 +14,9 @@ public class UsedCurrentServiceImpl implements UsedCurrentService {
 	private UsedDao usedDao;
 	
 	@Override
-	public List<UsedCurrentDTO> usedShow(String rsd_id) {
+	public List<UsedCurrentDTO> usedShow(UsedCurrentDTO usedCurrentDto) {
 		System.out.println("경로 : UsedCurrentServiceImpl -- usedShow( ) 접속됨");
-		return usedDao.usedShow(rsd_id);
+		return usedDao.usedShow(usedCurrentDto);
 	}
 	
 	@Override

@@ -37,13 +37,11 @@ public class UsedController {
 	@RequestMapping(value="/used/usedCurrent", method=RequestMethod.POST) 
 	public ModelAndView getUsedCurrent(UsedCurrentDTO usedCurrentDto, HttpSession session, HttpServletRequest request, 
 			HttpServletResponse response, String rsd_id) throws IOException, ServletException{
-		request.setCharacterEncoding("UTF-8");	
-		usedCurrentDto.setRsd_id("10050" + 	usedCurrentDto.getAddr1() + 	usedCurrentDto.getAddr2());
+		request.setCharacterEncoding("UTF-8");
+//		usedCurrentDto.setRsd_id("10050" + 	usedCurrentDto.getAddr1() + 	usedCurrentDto.getAddr2());	
 		ModelAndView mv = new ModelAndView("usedCurrent");
 		System.out.println("경로 : UsedController -- POST 접속 ");		
-		mv.addObject("usedShow", usedCurrentService.usedShow(usedCurrentDto.getRsd_id()));
-/*		mv.addObject("usedTime", usedCurrentService.usedShow(usedCurrentDto.getLp_Cptr_Time()));*/
-		System.out.println("경로 : UsedController -- mv.addObject  -- " + usedCurrentDto.getRsd_id());
+		mv.addObject("usedShow", usedCurrentService.usedShow(usedCurrentDto));
 		return mv;
 	}
 

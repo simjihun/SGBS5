@@ -28,10 +28,10 @@ public class UsedManager {
 		}
 	}
 	
-	public static List<UsedCurrentDTO> usedShow(String rsd_id){
+	public static List<UsedCurrentDTO> usedShow(UsedCurrentDTO usedCurrentDto){
 		List<UsedCurrentDTO> list = null;
 		SqlSession session = sqlMapper.openSession();
-		list = session.selectList("usedShow",rsd_id);
+		list = session.selectList("usedShow",usedCurrentDto);
 		return list;
 	}
 	

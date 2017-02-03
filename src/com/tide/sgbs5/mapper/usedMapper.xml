@@ -5,16 +5,19 @@
 
 <mapper namespace="com.tide.sgbs5.mapper.usedMapper">
 
-	<select id="usedShow" parameterType="String" resultType="UsedCurrentDTO">
+	<select id="usedShow" parameterType="UsedCurrentDTO" resultType="UsedCurrentDTO">
  	SELECT 
  	 @RNUM := @RNUM + 1 AS ROWNUM,
+ 	 RSD_ID,
  	 DATE_FORMAT(LP_CPTR_TIME,'%Y-%m-%d') as LP_CPTR_ONLYDATE, 
  	 DATE_FORMAT(LP_CPTR_TIME,'%H:%i') as LP_CPTR_ONLYTIME,
  	 ACT_PWRER, RSD_ID, LP_ACT_PWRER,
- 	 LP_GND_RACT_PWRER AS LP_RACT_PWRER, LP_TRTH_RACT_PWRER AS RACT_PWRER
+ 	 GND_RACT_PWRER AS LP_RACT_PWRER, TRTH_RACT_PWRER AS RACT_PWRER
  	FROM EMST_RAW_DATA, ( SELECT @RNUM := 0 ) R
- 	WHERE RSD_ID= #{RSD_ID} 
- 		AND DATE_ADD(NOW(), INTERVAL -1 HOUR)  &lt; DATE_FORMAT(LP_CPTR_TIME, '%Y-%m-%d %H:%i')
+ 	    WHERE CAST(SUBSTR(RSD_ID,1,5) AS UNSIGNED)= '10050'
+ 	    AND CAST(SUBSTR(RSD_ID,6,3) AS UNSIGNED)= #{addr1} 
+ 		AND CAST(SUBSTR(RSD_ID,9,11) AS UNSIGNED) = #{addr2} 
+ 		AND DATE_ADD(NOW(), INTERVAL -10 HOUR)  &lt; DATE_FORMAT(LP_CPTR_TIME, '%Y-%m-%d %H:%i')
 	</select>
 
 
